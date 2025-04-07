@@ -1,10 +1,8 @@
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './styles/theme';
-import Header from './components/layout/Header';
-import Hero from './components/sections/Hero';
-import ClassesSection from './components/sections/ClassesSection';
 import { useEffect } from 'react';
+import LandingPage from './pages/LandingPage';
 
 function App() {
   // Setup intersection observer for scroll animations
@@ -40,11 +38,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header />
-      <main>
-        <Hero />
-        <ClassesSection />
-      </main>
+      <LandingPage/>
     </ThemeProvider>
   );
 }

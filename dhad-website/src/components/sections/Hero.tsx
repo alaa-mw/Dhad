@@ -1,7 +1,7 @@
 import { Box, Typography, Button, Container } from '@mui/material';
 import { motion } from 'framer-motion';
 import heroImage from '../../assets/images/hero-image.jpeg';
-import heroShape2 from '../../assets/images/hero-shape-2.png';
+// import heroShape2 from '../../assets/images/hero-shape-2.png';
 import heroShape3 from '../../assets/images/hero-shape-3.png';
 import heroBg from '../../assets/images/hero-bg.svg';
 

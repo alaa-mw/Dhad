@@ -1,6 +1,7 @@
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
+  // direction:'rtl',
   palette: {
     primary: {
       main: '#428f9a',
@@ -9,7 +10,7 @@ const theme = createTheme({
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#c08e46',
+      main: '#ef8e0b',
       light: '#d6b278',
       dark: '#8c6930',
       contrastText: '#ffffff',
@@ -55,6 +56,14 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiCssBaseline: {
+    styleOverrides: {
+      ':root': {
+        fontFamily: "'Cairo', sans-serif",
+        direction: 'rtl',
+      },
+    },
+  },
     MuiButton: {
       styleOverrides: {
         root: {
