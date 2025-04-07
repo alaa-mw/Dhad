@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import theme from './styles/theme';
+import Header from './components/layout/Header';
+import Hero from './components/sections/Hero';
+import ClassesSection from './components/sections/ClassesSection';
+import { useEffect } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Setup intersection observer for scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          // Uncomment this line if you want elements to animate again when they leave viewport
+          // entry.target.classList.remove('visible');
+        }
+      }
+    }, { threshold: 0.1 });
+
+    // Get all elements with animation classes
+    const animatedElements = document.querySelectorAll(
+      '.fade-in, .slide-up, .slide-right, .slide-left'
+    );
+
+    // Observe each element
+    for (const el of animatedElements) {
+      observer.observe(el);
+    }
+
+    return () => {
+      for (const el of animatedElements) {
+        observer.unobserve(el);
+      }
+    };
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Header />
+      <main>
+        <Hero />
+        <ClassesSection />
+      </main>
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
