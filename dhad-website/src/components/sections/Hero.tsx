@@ -91,7 +91,7 @@ const Hero = () => {
                     fontWeight: 700,
                     mb: 1,
                     textAlign: { xs: 'center', md: 'right' },
-                    direction: 'rtl',
+                    // direction: 'rtl',
                   }}
                 >
                   أفضل البرامج
@@ -111,7 +111,7 @@ const Hero = () => {
                   sx={{
                     mb: 4,
                     textAlign: { xs: 'center', md: 'right' },
-                    direction: 'rtl',
+                    // direction: 'rtl',
                     maxWidth: '600px',
                     ml: { xs: 'auto', md: 0 },
                     mr: { xs: 'auto', md: 0 },
