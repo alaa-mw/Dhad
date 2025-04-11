@@ -1,0 +1,13 @@
+.up{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: block;
+    padding: 15px;
+    background-color: #428f9a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+}
