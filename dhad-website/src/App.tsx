@@ -1,6 +1,20 @@
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider,createTheme  } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import rtlPlugin from 'stylis-plugin-rtl';
 import theme from './styles/theme';
+import createCache from '@emotion/cache';
+import Header from './components/layout/Header';
+import Hero from './components/sections/Hero';
+import ClassesSection from './components/sections/ClassesSection';
+import { useEffect } from 'react';
+import { CacheProvider } from '@emotion/react';
+import ScrollToTop from './components/sections/scrollUp';
+
+const cacheRtl = createCache({
+  key: 'muirtl',
+  stylisPlugins: [rtlPlugin],
+});
+
 import { useEffect } from 'react';
 import LandingPage from './pages/LandingPage';
 
@@ -36,10 +50,25 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
+    <CacheProvider value={cacheRtl}>
+      <ThemeProvider theme={theme}>
       <CssBaseline />
+
+      <div dir='rtl' lang='ar'>
+          <Header />
+          <main >
+          <Hero />
+          <ClassesSection />
+        </main>
+      </div>
+      
+
       <LandingPage/>
+
     </ThemeProvider>
+    <ScrollToTop></ScrollToTop>
+    </CacheProvider>
+    
   );
 }
 
