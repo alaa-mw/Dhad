@@ -42,8 +42,10 @@ const CourseCard = ({ data }: Props) => {
         sx={{
           width: "365px",
           height: "445px",
-          box_shadow: 0,
           textAlign: right,
+          boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+          margin:"5px 1px",
+          boxSizing:"border-box",
         }}
         elevation={0}
       >
