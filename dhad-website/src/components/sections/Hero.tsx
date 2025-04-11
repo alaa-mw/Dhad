@@ -1,9 +1,13 @@
 import { Box, Typography, Button, Container } from '@mui/material';
 import { motion } from 'framer-motion';
+
 import heroImage from '../../assets/images/hero-image.webp';
 import heroShape3 from '../../assets/images/hero-shape-3.webp';
 import boys from '../../assets/images/boys-gaming_23-2148141557.webp';
 import girls from '../../assets/images/young-boy-girl-using-laptop-with-headphones_23-2148816944.webp';
+import heroImage from '../../assets/images/hero-image.jpeg';
+import heroShape3 from '../../assets/images/hero-shape-3.png';
+import heroBg from '../../assets/images/hero-bg.svg';
 
 
 const Hero = () => {
@@ -77,8 +81,12 @@ const Hero = () => {
                     fontSize: { xs: '2.5rem', md: '3.5rem' },
                     fontWeight: 700,
                     mb: 1,
+
                     textAlign: { xs: 'center', md: 'left' },
                     direction: 'ltr',
+
+                    textAlign: { xs: 'center', md: 'right' },
+                    // direction: 'rtl',
                   }}
                 >
                   أفضل البرامج
@@ -96,10 +104,16 @@ const Hero = () => {
                 <Typography
                   variant="subtitle1"
                   sx={{
+
                     mb:2,
                     mt:2,
                     textAlign: { xs: 'center', md: 'left' },
                     direction: 'ltr',
+
+                    mb: 4,
+                    textAlign: { xs: 'center', md: 'right' },
+                    // direction: 'rtl',
+
                     maxWidth: '600px',
                     ml: { xs: 'auto', md: 0 },
                     mr: { xs: 'auto', md: 0 },

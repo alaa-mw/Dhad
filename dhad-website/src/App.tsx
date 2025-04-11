@@ -15,6 +15,9 @@ const cacheRtl = createCache({
   stylisPlugins: [rtlPlugin],
 });
 
+import { useEffect } from 'react';
+import LandingPage from './pages/LandingPage';
+
 function App() {
   // Setup intersection observer for scroll animations
   useEffect(() => {
@@ -50,6 +53,7 @@ function App() {
     <CacheProvider value={cacheRtl}>
       <ThemeProvider theme={theme}>
       <CssBaseline />
+
       <div dir='rtl' lang='ar'>
           <Header />
           <main >
@@ -58,6 +62,9 @@ function App() {
         </main>
       </div>
       
+
+      <LandingPage/>
+
     </ThemeProvider>
     <ScrollToTop></ScrollToTop>
     </CacheProvider>
