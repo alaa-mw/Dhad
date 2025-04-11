@@ -1,9 +1,10 @@
 import { Box, Typography, Button, Container } from '@mui/material';
 import { motion } from 'framer-motion';
-import heroImage from '../../assets/images/hero-image.jpeg';
-import heroShape2 from '../../assets/images/hero-shape-2.png';
-import heroShape3 from '../../assets/images/hero-shape-3.png';
-import heroBg from '../../assets/images/hero-bg.svg';
+import heroImage from '../../assets/images/hero-image.webp';
+import heroShape3 from '../../assets/images/hero-shape-3.webp';
+import boys from '../../assets/images/boys-gaming_23-2148141557.webp';
+import girls from '../../assets/images/young-boy-girl-using-laptop-with-headphones_23-2148816944.webp';
+
 
 const Hero = () => {
   // Animation variants
@@ -33,10 +34,9 @@ const Hero = () => {
       component="section"
       sx={{
         position: 'relative',
-        pt: { xs: 10, md: 15 },
-        pb: { xs: 10, md: 15 },
+        pt: { xs: 0, md: 5 },
         overflow: 'hidden',
-        background: `url(${heroBg}) no-repeat center bottom / cover`,
+        background: `url(${heroShape3}) no-repeat center `,
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
@@ -44,20 +44,7 @@ const Hero = () => {
     >
       {/* Background shapes */}
 
-      <Box
-        component="img"
-        src={heroShape3}
-        alt=""
-        className="slide-right"
-        sx={{
-          position: 'absolute',
-          bottom: '20%',
-          right: '10%',
-          maxWidth: { xs: '80px', md: '120px' },
-          opacity: 0.6,
-          zIndex: 0,
-        }}
-      />
+      
 
       <Container maxWidth="lg">
         <Box
@@ -90,8 +77,8 @@ const Hero = () => {
                     fontSize: { xs: '2.5rem', md: '3.5rem' },
                     fontWeight: 700,
                     mb: 1,
-                    textAlign: { xs: 'center', md: 'right' },
-                    direction: 'rtl',
+                    textAlign: { xs: 'center', md: 'left' },
+                    direction: 'ltr',
                   }}
                 >
                   أفضل البرامج
@@ -109,9 +96,10 @@ const Hero = () => {
                 <Typography
                   variant="subtitle1"
                   sx={{
-                    mb: 4,
-                    textAlign: { xs: 'center', md: 'right' },
-                    direction: 'rtl',
+                    mb:2,
+                    mt:2,
+                    textAlign: { xs: 'center', md: 'left' },
+                    direction: 'ltr',
                     maxWidth: '600px',
                     ml: { xs: 'auto', md: 0 },
                     mr: { xs: 'auto', md: 0 },
@@ -126,7 +114,7 @@ const Hero = () => {
                   sx={{
                     display: 'flex',
                     gap: 2,
-                    justifyContent: { xs: 'center', md: 'flex-end' },
+                    justifyContent: { xs: 'center', md: 'flex-start' },
                     mb: 4,
                   }}
                 >
@@ -162,13 +150,48 @@ const Hero = () => {
             >
               <Box
                 component="img"
+                loading='lazy'
                 src={heroImage}
                 alt="Student learning"
                 sx={{
-                  width: '100%',
+                  width: '30%',
                   borderRadius: 4,
                   boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)',
-                  transform: 'perspective(1000px) rotateY(-5deg)',
+                  transform: 'perspective(1000px) rotateY(-15deg)',
+                  transition: 'transform 0.5s ease',
+                  '&:hover': {
+                    transform: 'perspective(1000px) rotateY(0deg)',
+                  }
+                }}
+              />
+              <Box
+                component="img"
+                loading='lazy'
+                src={girls}
+                alt="Student learning"
+                sx={{
+                  width: '60%',
+                  margin: '1rem',
+                  borderRadius: 4,
+                  boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)',
+                  transform: 'perspective(1000px) rotateY(-15deg)',
+                  transition: 'transform 0.5s ease',
+                  '&:hover': {
+                    transform: 'perspective(1000px) rotateY(0deg)',
+                  }
+                }}
+              />
+               <Box
+                component="img"
+                loading='lazy'
+                src={boys}
+                alt="boys learning"
+                sx={{
+                  margin:'1rem',
+                  width: '90%',
+                  borderRadius: 4,
+                  boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)',
+                  transform: 'perspective(1000px) rotateY(-15deg)',
                   transition: 'transform 0.5s ease',
                   '&:hover': {
                     transform: 'perspective(1000px) rotateY(0deg)',
@@ -179,8 +202,7 @@ const Hero = () => {
           </Box>
         </Box>
       </Container>
-    </Box>
-  );
+    </Box>);
 };
 
 export default Hero;

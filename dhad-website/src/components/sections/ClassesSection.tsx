@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, Fragment } from 'react';
 import { Box, Typography, Container, Card, CardContent, Button, IconButton } from '@mui/material';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -80,11 +80,17 @@ const ClassesSection = () => {
   };
 
   // Scroll handling functions
+  const isRTL = typeof document !== 'undefined' && document.documentElement.dir === 'rtl';
   const scrollLeft = () => {
     if (carouselRef.current) {
       const itemsPerView = getItemsPerView();
       const cardWidth = carouselRef.current.scrollWidth / classesData.length;
-      const newPosition = Math.max(scrollPosition - (cardWidth * itemsPerView), 0);
+      const delta=cardWidth*itemsPerView;
+      
+
+      const newPosition= isRTL
+      ? carouselRef.current.scrollLeft+delta
+      : Math.max(scrollPosition - delta ,0)
 
       carouselRef.current.scrollTo({
         left: newPosition,
@@ -100,7 +106,11 @@ const ClassesSection = () => {
       const itemsPerView = getItemsPerView();
       const cardWidth = carouselRef.current.scrollWidth / classesData.length;
       const maxScroll = carouselRef.current.scrollWidth - carouselRef.current.clientWidth;
-      const newPosition = Math.min(scrollPosition + (cardWidth * itemsPerView), maxScroll);
+      const delta =cardWidth* itemsPerView;
+      
+      const newPosition = isRTL
+      ? Math.max(carouselRef.current.scrollLeft - delta, -maxScroll)  
+      : Math.min(scrollPosition + delta, maxScroll); 
 
       carouselRef.current.scrollTo({
         left: newPosition,
@@ -139,7 +149,9 @@ const ClassesSection = () => {
   };
 
   return (
-    <Box
+    <div  dir='ltr'>
+
+    <Box 
       id="courses"
       component="section"
       sx={{
@@ -398,6 +410,8 @@ const ClassesSection = () => {
         </Box>
       </Container>
     </Box>
+    </div>
+
   );
 };
 
