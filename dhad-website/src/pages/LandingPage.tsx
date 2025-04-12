@@ -7,6 +7,7 @@ import VideoSection from "../components/landingPage/video/VideoSection";
 
 const LandingPage = () => {
   return (
+    //comment
     <>
       <CourseSection />
       <VideoSection />
