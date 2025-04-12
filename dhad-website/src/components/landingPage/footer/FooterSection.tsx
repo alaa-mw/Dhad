@@ -82,7 +82,7 @@ const FooterSection = () => {
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                   <Typography variant="body2">البريد الالكتروني:</Typography>
                   <Link
-                    href="mailto:ayaalmassre502@gmail.com"
+                    href="mailto:dhadedu4@gmail.com"
                     sx={{
                       color: "white",
                       direction: "ltr",
@@ -90,7 +90,7 @@ const FooterSection = () => {
                       "&:hover": { textDecoration: "underline" },
                     }}
                   >
-                    ayaalmassre502@gmail.com
+                    dhadedu4@gmail.com
                   </Link>
                 </Box>
               </Stack>
@@ -213,25 +213,6 @@ const FooterSection = () => {
               </Stack>
             </Box>
           </Box>
-        </Container>
-      </Box>
-
-      {/* Footer Bottom */}
-      <Box sx={{ py: 3 }}>
-        <Container maxWidth="lg">
-          <Typography variant="body2" align="center">
-            Copyright 2025 All Rights Reserved by{" "}
-            <Link
-              href="#"
-              sx={{
-                color: "white",
-                textDecoration: "none",
-                "&:hover": { textDecoration: "underline" },
-              }}
-            >
-              codewithdhad
-            </Link>
-          </Typography>
         </Container>
       </Box>
     </Box>

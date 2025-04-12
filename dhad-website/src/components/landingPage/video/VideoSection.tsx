@@ -123,7 +123,7 @@ const VideoSection = () => {
             {/* Pulsing circle background */}
             <motion.div
               animate={{
-                scale: [1, 1.5],
+                scale: [1, 1.2, 1],
                 opacity: [0, 0.5, 0],
               }}
               transition={{
