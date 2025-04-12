@@ -20,7 +20,7 @@ class apiClient <T>{
     //arrow func is needed
     getAll = () => {
         
-  const cookies = new Cookies()
+        const cookies = new Cookies()
         const token = cookies.get("authToken");
         return axiosInstance.get<FetchResponse<T>>(this.endpoint,{
             headers: {
