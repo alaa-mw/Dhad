@@ -9,6 +9,7 @@ import ClassesSection from './components/sections/ClassesSection';
 import { useEffect } from 'react';
 import { CacheProvider } from '@emotion/react';
 import ScrollToTop from './components/sections/scrollUp';
+import Whatsapp from './components/sections/whatsapp';
 
 const cacheRtl = createCache({
   key: 'muirtl',
@@ -60,6 +61,7 @@ function App() {
       
     </ThemeProvider>
     <ScrollToTop></ScrollToTop>
+    <Whatsapp></Whatsapp>
     </CacheProvider>
     
   );

@@ -1,0 +1,13 @@
+.whatsapp{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 0.3rem;
+    scale: 2.5;
+    background-color: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    margin: 1rem;
+}
