@@ -1,4 +1,4 @@
-import { ThemeProvider,createTheme  } from '@mui/material/styles';
+import { ThemeProvider  } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import rtlPlugin from 'stylis-plugin-rtl';
 import theme from './styles/theme';
@@ -6,7 +6,7 @@ import createCache from '@emotion/cache';
 import Header from './components/layout/Header';
 import Hero from './components/sections/Hero';
 import ClassesSection from './components/sections/ClassesSection';
-import { useEffect } from 'react';
+
 import { CacheProvider } from '@emotion/react';
 import ScrollToTop from './components/sections/scrollUp';
 
@@ -50,7 +50,8 @@ function App() {
   }, []);
 
   return (
-    <CacheProvider value={cacheRtl}>
+    <>
+    {/* <CacheProvider value={cacheRtl}> */}
       <ThemeProvider theme={theme}>
       <CssBaseline />
 
@@ -67,8 +68,8 @@ function App() {
 
     </ThemeProvider>
     <ScrollToTop></ScrollToTop>
-    </CacheProvider>
-    
+    {/* </CacheProvider> */}
+    </>
   );
 }
 

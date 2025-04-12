@@ -5,10 +5,6 @@ import heroImage from '../../assets/images/hero-image.webp';
 import heroShape3 from '../../assets/images/hero-shape-3.webp';
 import boys from '../../assets/images/boys-gaming_23-2148141557.webp';
 import girls from '../../assets/images/young-boy-girl-using-laptop-with-headphones_23-2148816944.webp';
-import heroImage from '../../assets/images/hero-image.jpeg';
-import heroShape3 from '../../assets/images/hero-shape-3.png';
-import heroBg from '../../assets/images/hero-bg.svg';
-
 
 const Hero = () => {
   // Animation variants
@@ -85,7 +81,6 @@ const Hero = () => {
                     textAlign: { xs: 'center', md: 'left' },
                     direction: 'ltr',
 
-                    textAlign: { xs: 'center', md: 'right' },
                     // direction: 'rtl',
                   }}
                 >
@@ -110,8 +105,8 @@ const Hero = () => {
                     textAlign: { xs: 'center', md: 'left' },
                     direction: 'ltr',
 
-                    mb: 4,
-                    textAlign: { xs: 'center', md: 'right' },
+                    // mb: 4,
+                    // textAlign: { xs: 'center', md: 'right' },
                     // direction: 'rtl',
 
                     maxWidth: '600px',
