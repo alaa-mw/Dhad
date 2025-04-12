@@ -29,6 +29,11 @@ const Hero = () => {
   };
 
   return (
+    <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+            >
     <Box
       id="home"
       component="section"
@@ -78,10 +83,8 @@ const Hero = () => {
                     fontWeight: 700,
                     mb: 1,
 
-                    textAlign: { xs: 'center', md: 'left' },
+                    textAlign: { xs: 'center', md: 'right' },
                     direction: 'ltr',
-
-                    // direction: 'rtl',
                   }}
                 >
                   أفضل البرامج
@@ -102,13 +105,8 @@ const Hero = () => {
 
                     mb:2,
                     mt:2,
-                    textAlign: { xs: 'center', md: 'left' },
+                    textAlign: { xs: 'center', md: 'right' },
                     direction: 'ltr',
-
-                    // mb: 4,
-                    // textAlign: { xs: 'center', md: 'right' },
-                    // direction: 'rtl',
-
                     maxWidth: '600px',
                     ml: { xs: 'auto', md: 0 },
                     mr: { xs: 'auto', md: 0 },
@@ -211,7 +209,8 @@ const Hero = () => {
           </Box>
         </Box>
       </Container>
-    </Box>);
+    </Box>
+    </motion.div>);
 };
 
 export default Hero;
