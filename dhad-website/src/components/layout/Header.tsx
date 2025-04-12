@@ -70,7 +70,11 @@ const Header = () => {
   const drawer = (
     <Box sx={{ width: 280, p: 2 }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+
         <Box component="img" src={logo} alt="Logo" sx={{ height: 40 }} loading='lazy' />
+
+        <Box component="img" src={logo} alt="Logo" sx={{ height: 40  }} />
+
         <IconButton
           edge="end"
           color="inherit"
