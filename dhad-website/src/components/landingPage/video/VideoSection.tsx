@@ -5,6 +5,7 @@ import vid from "../../../assets/images/video-banner.jpg";
 import shape1 from "../../../assets/images/video-shape-1.png";
 import shape2 from "../../../assets/images/video-shape-2.png";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
+import { motion } from "framer-motion";
 
 const VideoSection = () => {
   return (
@@ -17,96 +18,140 @@ const VideoSection = () => {
           flexDirection: "column",
           alignItems: "center",
           width: "100%",
-          height: "700px",
           backgroundColor: "background.paper",
-          paddingBottom:"120px"
+          paddingBottom: "15vh",
         }}
       >
         <Box // ---background
           sx={{
             position: "absolute",
             width: "100%",
-            height: "300px",
+            height: "30vh",
             backgroundImage: `url(${bgvid})`,
             backgroundSize: "cover", // Ensures image covers the box
             backgroundRepeat: "no-repeat", // Prevents repeating
           }}
         />
-        <Box // ---video
+        {/* Video container with shapes */}
+        <Box
           sx={{
             position: "relative",
             zIndex: 3,
-            top: 100,
-            width: 900,
-            height: 500,
+            top: "10vh",
+            width: "63vw",
+            aspectRatio: 8.8 / 5,
+            borderRadius: "0 6.25vw",
             backgroundImage: `url(${vid})`,
             backgroundRepeat: "no-repeat",
-            borderRadius: "0 100px ",
+            backgroundSize: "contain",
             "&::before": {
-              // Dark overlay
+              // Dark overlay + shape1
               content: '""',
               position: "absolute",
               top: 0,
               left: 0,
               right: 0,
               bottom: 0,
-              backgroundColor: "hsla(0, 0%, 0%, 0.3)", // 50% darkness
-              borderRadius: "0 100px", // Match parent's border radius
-              zIndex: 1, // Above background but below content
+              backgroundColor: "hsla(0, 0%, 0%, 0.3)",
+              borderRadius: "0 6.25vw",
+              zIndex: 4,
             },
           }}
         >
-          <Box // ---video after
+          {/* Shape 1 - positioned relative to video box */}
+          <Box
             component="img"
             src={shape1}
-            alt="decorative shape"
+            alt="Decorative shape 1"
             sx={{
               position: "absolute",
-              top: -40,
-              right: -40,
-              width: 1100,
+              top: "calc(-10* (5/8.8) * 1vw)",
+              right: "-2.5vw",
+              width: "74.75vw",
               height: "auto",
-              zIndex: -10,
+              zIndex: 2,
             }}
           />
 
-          <Box // ---video before
+          {/* Shape 2 - positioned relative to video box */}
+          <Box
             component="img"
             src={shape2}
-            alt="decorative shape"
+            alt="Decorative shape 2"
             sx={{
               position: "absolute",
-              bottom: -30,
-              right: 10,
-              top: -80,
+              right: "0.625vw",
+              top: "calc(-12 * (5/8.8) * 1vw)",
+              width: "12vw",
               height: "auto",
-              zIndex: 1,
+              zIndex: 3,
             }}
           />
+        </Box>
 
-          <Box // Play Button (centered)
-            sx={{
-              position: "absolute",
-              zIndex: 2,
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              width: 80,
-              height: 80,
-              backgroundColor: "secondary.main",
-              borderRadius: "50%",
+        <Box
+          sx={{
+            position: "absolute",
+            zIndex: 5,
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "5vw", // 80px → ~5vw (80/16)
+            height: "5vw", // Maintain square aspect
+            minWidth: "40px", // Fallback minimum size
+            minHeight: "40px", // Fallback minimum size
+            backgroundColor: "secondary.main",
+            borderRadius: "50%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            "&:hover": {
+              transform: "translate(-50%, -50%) scale(1.1)",
+            },
+            transition: "transform 0.3s ease",
+          }}
+        >
+          <motion.div
+            style={{
+              position: "relative",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              cursor: "pointer",
-              "&:hover": {
-                transform: "translate(-50%, -50%) scale(1.1)",
-              },
-              transition: "transform 0.3s ease",
             }}
           >
-            <PlayArrowRoundedIcon sx={{ fontSize: 40, color: "#ffffff" }} />
-          </Box>
+            {/* Pulsing circle background */}
+            <motion.div
+              animate={{
+                scale: [1, 1.5],
+                opacity: [0, 0.5, 0],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeOut",
+              }}
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                borderRadius: "50%",
+                border: "50px solid rgba(255, 255, 255, 0.64)",
+                zIndex: 0,
+              }}
+            />
+
+            {/* Play icon */}
+            <PlayArrowRoundedIcon
+              sx={{
+                fontSize: "2.5vw",
+                minFontSize: "24px",
+                color: "#ffffff",
+                position: "relative",
+                zIndex: 1,
+              }}
+            />
+          </motion.div>
         </Box>
       </Box>
     </>

@@ -220,7 +220,7 @@ const FooterSection = () => {
       <Box sx={{ py: 3 }}>
         <Container maxWidth="lg">
           <Typography variant="body2" align="center">
-            Copyright 2022 All Rights Reserved by{" "}
+            Copyright 2025 All Rights Reserved by{" "}
             <Link
               href="#"
               sx={{
@@ -229,7 +229,7 @@ const FooterSection = () => {
                 "&:hover": { textDecoration: "underline" },
               }}
             >
-              codewithsadee
+              codewithdhad
             </Link>
           </Typography>
         </Container>

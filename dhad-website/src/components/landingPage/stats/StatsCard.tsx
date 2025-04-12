@@ -18,12 +18,12 @@ const StatsCard = ({ data }: Props) => {
           backgroundColor: `${data.color.replace(/,\s*1\)$/, ", 0.1)")}`,
           borderRadius: "10px",
           textAlign: "center",
-          lineHeight:1.1,
+          lineHeight: 1.1,
         }}
       >
         <Typography
           variant="h4"
-          sx={{ color: `${data.color}`, fontWeight: "bold" ,width:"200px"}}
+          sx={{ color: `${data.color}`, fontWeight: "bold", width: "200px" }}
         >
           {" "}
           {data.value}{" "}
