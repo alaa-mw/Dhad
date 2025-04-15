@@ -1,6 +1,5 @@
 import { Box, Typography, Button, Container } from '@mui/material';
 import { motion } from 'framer-motion';
-
 import heroImage from '../../assets/images/hero-image.webp';
 import heroShape3 from '../../assets/images/hero-shape-3.webp';
 import boys from '../../assets/images/boys-gaming_23-2148141557.webp';
