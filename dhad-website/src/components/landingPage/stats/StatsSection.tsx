@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import React from "react";
 import StatsCard from "./StatsCard";
 import { stats } from "../../../data/stats";
 import { motion } from 'framer-motion';
