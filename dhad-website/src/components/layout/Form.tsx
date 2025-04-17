@@ -20,6 +20,7 @@ import { styled } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 import Header from './Header';
 import FooterSection from '../landingPage/footer/FooterSection';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -91,6 +92,7 @@ const Form: React.FC = () => {
     email: '',
     country: '',
     studyLevel:'',
+    studyProgram:'',
     curriculum:'',
     phoneNumber:'',
     agreeToTerms: false,
@@ -128,13 +130,17 @@ interface SignupFormData {
   curriculum:string;
   phoneNumber:string;
   agreeToTerms: boolean;
+  studyProgram:string
 }
 
 
 
   return (
     <>
+    <ScrollToTop></ScrollToTop>
+
     <Header></Header>
+    
     <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -313,6 +319,31 @@ interface SignupFormData {
                   </StyledSelect>
                 </Box>
 
+                <Box>
+                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', mb: 1 }}>
+                    <Typography variant="subtitle1" component="span">
+                       البرنامج الذي ترغب فيه:
+                    </Typography>
+                  </Box>
+                  <StyledSelect
+                    fullWidth
+                    name="studyProgram"
+                    value={formData.studyProgram}
+                    onChange={handleSelectChange}
+                    displayEmpty
+                    variant="outlined"
+                    MenuProps={{
+                          disableScrollLock: true,
+                        }}
+                    >
+                    <MenuItem value="" disabled>
+                    اختر البرنامج
+                    </MenuItem >
+                    <MenuItem  value="primary">برنامج التعليم التعويضي المسرع</MenuItem>
+                    <MenuItem  value="middle">برنامج اللغة العربية لأبناء السوريين الغير ناطقين بها</MenuItem>
+                  </StyledSelect>
+                </Box>
+
                     <Typography variant="h6" component="h1" gutterBottom align="right" sx={{ mb: 1 }}>
                       المعلومات التواصل:
                     </Typography>
@@ -367,7 +398,7 @@ interface SignupFormData {
                     }
                     label={
                       <Typography variant="body2" >
-                        قرأت و أوافق على <Link href="#">سياسة الخصوصية</Link> و <Link href="#">دليل استخدام الموقع</Link>
+                        قرأت و أوافق على <Link >سياسة الخصوصية</Link> و <Link >دليل استخدام الموقع</Link>
                       </Typography>
                     }
                     labelPlacement="start"

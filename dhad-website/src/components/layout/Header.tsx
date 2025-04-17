@@ -127,6 +127,13 @@ const Header = () => {
                 src={logo}
                 alt="Logo"
                 sx={{ height: 50, cursor: 'pointer' }}
+                onClick={()=>{
+                  if (location.pathname === '/') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  } else {
+                    navigate('/');
+                  }
+                }}  
               />
 
               {!isMobile && (
