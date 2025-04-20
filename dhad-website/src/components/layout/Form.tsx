@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import {
+  Avatar,
+  Card,
+  CardContent,
   Box,
   Button,
   Checkbox,
@@ -21,20 +24,45 @@ import { motion } from 'framer-motion';
 import Header from './Header';
 import FooterSection from '../landingPage/footer/FooterSection';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
+import Grid from '@mui/material/Grid';
+import StarIcon from '@mui/icons-material/Star';
 
+
+
+const svgBottom = (
+  <Box
+    sx={{
+      position: 'relative',
+      bottom: -10,
+      right: 0,
+      width: '100%',
+      zIndex: -1,
+      opacity: 0.2,
+    }}
+  >
+    <svg viewBox="0 0 1440 320" width="100%" >
+      <path
+        fill="#ffb350"
+        d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,149.3C672,149,768,171,864,165.3C960,160,1056,128,1152,106.7C1248,85,1344,75,1392,69.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+      ></path>
+    </svg>
+  </Box>
+);
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(4),
-  backgroundColor: '#9cf2ff6c',
+   padding: theme.spacing(4),
+  background: 'linear-gradient(135deg, #e0f7fa, #ffffff)',
   borderRadius: theme.spacing(1),
-  boxShadow: 'none',
+  boxShadow: '0 4px 30px rgba(0, 0, 0, 0.05)',
+  backdropFilter: 'blur(4px)',
 }));
 
 const FormContainer = styled('form')(({ theme }) => ({
-  backgroundColor: 'white',
+    background: 'rgba(255, 255, 255, 0.75)',
   padding: theme.spacing(4),
   borderRadius: theme.spacing(1),
-  boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.05)',
+  boxShadow: '0px 8px 20px rgba(0, 0, 0, 0.08)',
+  backdropFilter: 'blur(8px)',
 }));
 
 
@@ -155,16 +183,122 @@ interface SignupFormData {
         <Box sx={{ width: { xs: '100%', md: '41.67%' } }}>
           <Paper sx={{ p: 4, height: 'auto', borderRadius: 2, backgroundColor: '#ffb35061', boxShadow: 'none' }}>
             <Typography variant="h4" component="h2" gutterBottom align="right">
-              انضم لاول منصة سورية للدروس العربية
+              انضم لاول منصة سورية للدروس  
+              <Box component="span" sx={{ color: 'warning.main' }}>&nbsp;العربية</Box>
             </Typography>
 
             <Box sx={{ mt: 6 }}>
               <Typography variant="body1" align="right">
                 يربطكم بأفضل المدرسين الخصوصيين حول العالم العربي
+                
               </Typography>
             </Box>
 
           </Paper>
+
+    {/*Design Section Teachers and Students*/}
+
+            <Stack spacing={4} mt={3}>
+              
+
+              {/* Students section */}
+              <Box borderRadius={2} boxShadow={1} p={3} sx={{backgroundColor:'#1ca7ae'}}>
+              <Card elevation={0} sx={{ overflow: 'hidden' }}>
+                <CardContent sx={{ display: 'flex', alignItems: 'center' ,backgroundColor:'#1ca7ae',color:'white'}}>
+                  <Box mr={3}>
+                    <img
+                      src="https://ext.same-assets.com/1925316835/2692914122.svg"
+                      alt="للطلاب"
+                      width={80}
+                      height={80}
+                      
+                    />
+                  </Box>
+                  <Box>
+                    <Typography variant="h6" fontWeight="bold" mr={1}>للطلاب</Typography>
+                    <Typography variant="body2" color='white' mr={1}>
+                      يربطكم بأفضل المدرسين الخصوصيين حول العالم العربي
+                    </Typography>
+                  </Box>
+                </CardContent>
+              </Card>
+              </Box>
+
+              {/* Teachers section */}
+              <Box borderRadius={2} boxShadow={1} p={3} sx={{backgroundColor:'#1ca7ae'}}>
+              <Card elevation={0} sx={{ overflow: 'hidden' }}>
+                <CardContent sx={{ display: 'flex', alignItems: 'center' ,backgroundColor:'#1ca7ae',color:'white'}}>
+                  <Box mr={3} >
+                    <img
+                      src="https://ext.same-assets.com/1925316835/1188184742.svg"
+                      alt="للمدرسين"
+                      width={80}
+                      height={80}
+                    />
+                  </Box>
+                  <Box>
+                    <Typography variant="h6" fontWeight="bold" mr={1}>للمدرسين</Typography>
+                    <Typography variant="body2" color="white" mr={1}>
+                      يربطك بالطلاب المهتمين بخدماتك التعليمية
+                    </Typography>
+                  </Box>
+                </CardContent>
+              </Card>
+              </Box>
+              
+
+              {/* Rating section */}
+              <Box p={3} bgcolor="white" borderRadius={2} boxShadow={1} >
+                <Stack direction="row" justifyContent="center"   mt={1}>
+                    <StarIcon sx={{ color: '#fbbf24' }} />
+                    <StarIcon sx={{ color: '#fbbf24' }} />
+                    <StarIcon sx={{ color: '#fbbf24' }} />
+                    <StarIcon sx={{ color: '#fbbf24' }} />
+                  
+                  <Typography variant="subtitle1" fontWeight="bold">4.0/5.0</Typography>
+                </Stack>
+
+                <Stack direction="row" justifyContent="center" spacing={-1} mt={2}>
+                  {[1457645329, 1422252817, 792584557, 2352962298, 1056112105].map((id) => (
+                    <Avatar
+                      key={id}
+                      src={`https://ext.same-assets.com/1925316835/${id}.webp`}
+                      sx={{ width: 32, height: 32, border: '2px solid white' }}
+                    />
+                  ))}
+                  <Avatar sx={{ width: 32, height: 32, bgcolor: 'teal', fontSize: 12 }}>+50K</Avatar>
+                </Stack>
+
+                <Typography variant="body2" align="center" color="text.secondary" mt={2}>
+                  نقدر طلابنا ومدرسينا
+                </Typography>
+              </Box>
+
+             <Box borderRadius={2} boxShadow={1}  sx={{backgroundColor:'#ffb35061'}}>
+              <Card elevation={0} sx={{ overflow: 'hidden' }}>
+                <CardContent sx={{  backgroundColor:'#ffb35061'}}>
+                    <Typography variant="h6" fontWeight="bold">لمحة عن برنامج التعليم التعويضي المسرع</Typography>
+                    <Typography variant="body2" mt={2} color="text.secondary">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos atque quis dolorem natus eum laborum dolor similique totam fugiat fuga.
+                    </Typography>
+                </CardContent>
+              </Card>
+              </Box>
+
+              <Box borderRadius={2} boxShadow={1} sx={{backgroundColor:'#ffb35061'}}>
+              <Card elevation={0} sx={{ overflow: 'hidden' }}>
+                <CardContent sx={{ backgroundColor:'#ffb35061'}}>
+                    <Typography variant="h6" fontWeight="bold">لمحة عن برنامج اللغة العربية لأبناء السوريين الغير ناطقين بها</Typography>
+                    <Typography variant="body2" mt={2} color="text.secondary">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos atque quis dolorem natus eum laborum dolor similique totam fugiat fuga.
+                    </Typography>
+                </CardContent>
+              </Card>
+              </Box>
+            </Stack>
+
+      {/* Design Done */}
+
         </Box>
 
         <Box sx={{ width: { xs: '100%', md: '58.33%' } }}>
@@ -422,9 +556,12 @@ interface SignupFormData {
         
       </Box>
     </Container>
-
+          {svgBottom}          
         <FooterSection></FooterSection>
+        
         </motion.div>
+      
+
     </>
 
   );
