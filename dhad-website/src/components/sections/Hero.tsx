@@ -160,14 +160,9 @@ const Hero = () => {
                 src={heroImage}
                 alt="Student learning"
                 sx={{
-                  width: '30%',
+                  width: { xs: '100%', md: '30%' },
                   borderRadius: 4,
                   boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)',
-                  transform: 'perspective(1000px) rotateY(-15deg)',
-                  transition: 'transform 0.5s ease',
-                  '&:hover': {
-                    transform: 'perspective(1000px) rotateY(0deg)',
-                  }
                 }}
               />
               <Box
@@ -177,14 +172,10 @@ const Hero = () => {
                 alt="Student learning"
                 sx={{
                   width: '60%',
+                  display: { xs: 'none', md: 'inline-block' },
                   margin: '1rem',
                   borderRadius: 4,
                   boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)',
-                  transform: 'perspective(1000px) rotateY(-15deg)',
-                  transition: 'transform 0.5s ease',
-                  '&:hover': {
-                    transform: 'perspective(1000px) rotateY(0deg)',
-                  }
                 }}
               />
                <Box
@@ -194,14 +185,10 @@ const Hero = () => {
                 alt="boys learning"
                 sx={{
                   margin:'1rem',
+                  display: { xs: 'none', md: 'inline-block' },  
                   width: '90%',
                   borderRadius: 4,
                   boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)',
-                  transform: 'perspective(1000px) rotateY(-15deg)',
-                  transition: 'transform 0.5s ease',
-                  '&:hover': {
-                    transform: 'perspective(1000px) rotateY(0deg)',
-                  }
                 }}
               />
             </motion.div>
