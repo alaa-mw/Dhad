@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import React from "react";
 import StatsCard from "./StatsCard";
 import { stats } from "../../../data/stats";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 const StatsSection = () => {
   // Animation variants
@@ -20,7 +20,7 @@ const StatsSection = () => {
         duration: 1.2,
         type: "spring",
         stiffness: 50, //Controls how "strong" the spring is
-        damping: 10,//how quickly the spring loses energy (friction)
+        damping: 10, //how quickly the spring loses energy (friction)
       },
     }),
   };
@@ -31,14 +31,14 @@ const StatsSection = () => {
         component="section"
         sx={{
           backgroundColor: "background.paper",
-          padding: "100px 2rem",
+          padding: "90px 10vw",
           display: "grid",
           placeItems: "center", //return
-          gap: 2,
+          gap: 1,
           gridTemplateColumns: {
             xs: "1fr",
-            sm: "repeat(3, 1fr)",
-            md: "repeat(4, 1fr)",
+            sm: "repeat(2, 1fr)",
+            md: "repeat(3, 1fr)",
           },
         }}
       >
