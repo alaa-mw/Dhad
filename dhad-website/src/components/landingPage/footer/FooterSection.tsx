@@ -14,7 +14,7 @@ import {
   Twitter,
   YouTube,
 } from "@mui/icons-material";
-import logo from "../../../assets/images/daad-logo-blue.jpg";
+import logo from "../../../assets/images/logo-blue.jpg";
 
 const FooterSection = () => {
   return (
