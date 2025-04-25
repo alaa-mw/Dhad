@@ -1,10 +1,9 @@
-import { Box, Typography, Button, Container } from "@mui/material";
-import { motion } from "framer-motion";
-
-import heroImage from "../../assets/images/hero-image.webp";
-import heroShape3 from "../../assets/images/hero-shape-3.webp";
-import boys from "../../assets/images/boys-gaming_23-2148141557.webp";
-import girls from "../../assets/images/young-boy-girl-using-laptop-with-headphones_23-2148816944.webp";
+import { Box, Typography, Button, Container } from '@mui/material';
+import { motion } from 'framer-motion';
+import heroImage from '../../assets/images/hero-image.webp';
+import heroShape3 from '../../assets/images/hero-shape-3.webp';
+import boys from '../../assets/images/boys-gaming_23-2148141557.webp';
+import girls from '../../assets/images/young-boy-girl-using-laptop-with-headphones_23-2148816944.webp';
 
 const Hero = () => {
   // Animation variants
@@ -29,28 +28,35 @@ const Hero = () => {
   };
 
   return (
+    <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+            >
     <Box
       id="home"
       component="section"
       sx={{
-        position: "relative",
+        position: 'relative',
         pt: { xs: 0, md: 5 },
-        overflow: "hidden",
+        overflow: 'hidden',
         background: `url(${heroShape3}) no-repeat center `,
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
       }}
     >
       {/* Background shapes */}
 
+      
+
       <Container maxWidth="lg">
         <Box
           sx={{
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
             gap: 4,
-            alignItems: "center",
+            alignItems: 'center'
           }}
         >
           {/* Hero content */}
@@ -58,7 +64,7 @@ const Hero = () => {
             sx={{
               flex: 1,
               order: { xs: 2, md: 1 },
-              width: "100%",
+              width: '100%'
             }}
           >
             <motion.div
@@ -72,24 +78,19 @@ const Hero = () => {
                   component="h1"
                   color="primary"
                   sx={{
-                    fontSize: { xs: "2.5rem", md: "3.5rem" },
+                    fontSize: { xs: '2.5rem', md: '3.5rem' },
                     fontWeight: 700,
                     mb: 1,
 
-                    textAlign: { xs: "center", md: "right" },
-                    direction: "ltr",
-
-                    // direction: 'rtl',
+                    textAlign: { xs: 'center', md: 'right' },
+                    direction: 'ltr',
                   }}
                 >
                   أفضل البرامج
-                  <Box
-                    component="span"
-                    sx={{
-                      color: "secondary.main",
-                      display: "block",
-                    }}
-                  >
+                  <Box component="span" sx={{
+                    color: 'secondary.main',
+                    display: 'block',
+                  }}>
                     التعليمية الترميمية
                   </Box>
                   للطلاب السوريين
@@ -100,32 +101,26 @@ const Hero = () => {
                 <Typography
                   variant="subtitle1"
                   sx={{
-                    mb: 2,
-                    mt: 2,
-                    textAlign: { xs: "center", md: "right" },
-                    direction: "ltr",
 
-                    // mb: 4,
-                    // textAlign: { xs: 'center', md: 'right' },
-                    // direction: 'rtl',
-
-                    maxWidth: "600px",
-                    ml: { xs: "auto", md: 0 },
-                    mr: { xs: "auto", md: 0 },
+                    mb:2,
+                    mt:2,
+                    textAlign: { xs: 'center', md: 'right' },
+                    direction: 'ltr',
+                    maxWidth: '600px',
+                    ml: { xs: 'auto', md: 0 },
+                    mr: { xs: 'auto', md: 0 },
                   }}
                 >
-                  مؤسسة تعليمية تسهل عملية اندماج الطلاب السوريين العائدين من
-                  الخارج أو المتأثرين بالحرب بالنظام الأكاديمي السوري من خلال
-                  منهجية تعليمية شاملة وداعمة
+                  مؤسسة تضم أكثر من 300 من مختصين بالتنمية التربوية وتخصصات لخدمة أبنائنا الطلاب السوريين. عن طريق ما تقدمه من البرامج التعليمي بطرق متميزة ومبتكرة.
                 </Typography>
               </motion.div>
 
               <motion.div variants={itemVariants}>
                 <Box
                   sx={{
-                    display: "flex",
+                    display: 'flex',
                     gap: 2,
-                    justifyContent: { xs: "center", md: "flex-start" },
+                    justifyContent: { xs: 'center', md: 'flex-start' },
                     mb: 4,
                   }}
                 >
@@ -151,7 +146,7 @@ const Hero = () => {
             sx={{
               flex: 1,
               order: { xs: 1, md: 2 },
-              width: "100%",
+              width: '100%'
             }}
           >
             <motion.div
@@ -161,52 +156,39 @@ const Hero = () => {
             >
               <Box
                 component="img"
-                loading="lazy"
+                loading='lazy'
                 src={heroImage}
                 alt="Student learning"
                 sx={{
-                  width: "30%",
+                  width: { xs: '100%', md: '30%' },
                   borderRadius: 4,
-                  boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
-                  transform: "perspective(1000px) rotateY(-15deg)",
-                  transition: "transform 0.5s ease",
-                  "&:hover": {
-                    transform: "perspective(1000px) rotateY(0deg)",
-                  },
+                  boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)',
                 }}
               />
               <Box
                 component="img"
-                loading="lazy"
+                loading='lazy'
                 src={girls}
                 alt="Student learning"
                 sx={{
-                  width: "60%",
-                  margin: "1rem",
+                  width: '60%',
+                  display: { xs: 'none', md: 'inline-block' },
+                  margin: '1rem',
                   borderRadius: 4,
-                  boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
-                  transform: "perspective(1000px) rotateY(-15deg)",
-                  transition: "transform 0.5s ease",
-                  "&:hover": {
-                    transform: "perspective(1000px) rotateY(0deg)",
-                  },
+                  boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)',
                 }}
               />
-              <Box
+               <Box
                 component="img"
-                loading="lazy"
+                loading='lazy'
                 src={boys}
                 alt="boys learning"
                 sx={{
-                  margin: "1rem",
-                  width: "90%",
+                  margin:'1rem',
+                  display: { xs: 'none', md: 'inline-block' },  
+                  width: '90%',
                   borderRadius: 4,
-                  boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
-                  transform: "perspective(1000px) rotateY(-15deg)",
-                  transition: "transform 0.5s ease",
-                  "&:hover": {
-                    transform: "perspective(1000px) rotateY(0deg)",
-                  },
+                  boxShadow: '0 10px 40px rgba(0, 0, 0, 0.1)',
                 }}
               />
             </motion.div>
@@ -214,7 +196,7 @@ const Hero = () => {
         </Box>
       </Container>
     </Box>
-  );
+    </motion.div>);
 };
 
 export default Hero;
