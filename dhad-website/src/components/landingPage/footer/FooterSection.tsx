@@ -137,12 +137,13 @@ const FooterSection = () => {
               </Typography>
               <List dense>
                 {[
-                  { id: "contact", title: "تواصل معنا" },
+                  { id: "contact-form", title: "تواصل معنا" },
                   { id: "login", title: "تسجيل الدخول" },
                 ].map((item) => (
                   <ListItem key={item.id} sx={{ px: 0 }}>
                     <Link
-                      href={`#${item.id}`}
+                      href={`${item.id}`}
+                      
                       sx={{
                         color: "white",
                         textDecoration: "none",
