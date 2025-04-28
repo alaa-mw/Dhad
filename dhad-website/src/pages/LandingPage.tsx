@@ -6,6 +6,8 @@ import Header from '../components/layout/Header';
 import Hero from '../components/sections/Hero';
 import ClassesSection from '../components/sections/ClassesSection';
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
+import ConsultationsSection from "../components/sections/ConsultationsSection";
+
 
 const LandingPage = () => {
   
@@ -21,6 +23,8 @@ const LandingPage = () => {
         <ClassesSection />
       </main>
       
+      <ConsultationsSection />
+
       <CourseSection />
 
       <section id="about">

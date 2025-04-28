@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import LandingPage from './pages/LandingPage';
 import { BrowserRouter,Route, Routes } from 'react-router-dom';
 import Form from './components/layout/Form';
+import Consultations from './components/sections/ConsultationsSection';
 
 function App() {
   // Setup intersection observer for scroll animations
@@ -40,6 +41,7 @@ function App() {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
       <CssBaseline />
+      
 
       <div dir='rtl' lang='ar'>
           <Routes>

@@ -24,7 +24,6 @@ import { motion } from 'framer-motion';
 import Header from './Header';
 import FooterSection from '../landingPage/footer/FooterSection';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
-import Grid from '@mui/material/Grid';
 import StarIcon from '@mui/icons-material/Star';
 
 
