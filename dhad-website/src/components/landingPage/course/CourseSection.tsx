@@ -7,9 +7,11 @@ import { courses } from "../../../data/courses";
 import CourseCard from "./CourseCard";
 
 const CourseSection = () => {
+
   return (
     <>
       <Box
+        id="edu"
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -30,8 +32,8 @@ const CourseSection = () => {
         <motion.div
           initial={{ opacity: 0, translateY: 100 }}
           whileInView={{ opacity: 1, translateY: 0 }}
-          transition={{duration:3, type:"spring",}}
-          >
+          transition={{ duration: 3, type: "spring" }}
+        >
           <Box
             sx={{
               display: "grid",

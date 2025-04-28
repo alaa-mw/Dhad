@@ -8,6 +8,8 @@ import LandingPage from './pages/LandingPage';
 import { BrowserRouter,Route, Routes } from 'react-router-dom';
 import Form from './components/layout/Form';
 import Consultations from './components/sections/ConsultationsSection';
+import ContactForm from './pages/ContactForm';
+import AdminRegister from './pages/AdminRegister';
 
 function App() {
   // Setup intersection observer for scroll animations
@@ -47,6 +49,8 @@ function App() {
           <Routes>
             <Route path='/' element={<LandingPage></LandingPage>}></Route>
             <Route path='form' element={<Form></Form>}></Route>
+            <Route path='contact-form' element={<ContactForm/>}></Route>
+            <Route path='login' element={<AdminRegister/>}></Route>
           </Routes>
       </div>
 
