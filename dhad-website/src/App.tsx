@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import LandingPage from './pages/LandingPage';
 import { BrowserRouter,Route, Routes } from 'react-router-dom';
 import Form from './components/layout/Form';
+import Consultations from './components/sections/ConsultationsSection';
 import ContactForm from './pages/ContactForm';
 import AdminRegister from './pages/AdminRegister';
 
@@ -42,6 +43,7 @@ function App() {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
       <CssBaseline />
+      
 
       <div dir='rtl' lang='ar'>
           <Routes>

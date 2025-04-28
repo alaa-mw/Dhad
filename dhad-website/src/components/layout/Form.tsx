@@ -18,6 +18,14 @@ import {
   SelectChangeEvent,
   Stack,
   RadioGroup,
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { motion } from 'framer-motion';
+import Header from './Header';
+import FooterSection from '../landingPage/footer/FooterSection';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
+import StarIcon from '@mui/icons-material/Star';
+
   Snackbar,
   Alert,
 } from "@mui/material";
