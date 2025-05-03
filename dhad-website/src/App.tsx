@@ -7,9 +7,30 @@ import { useEffect } from 'react';
 import LandingPage from './pages/LandingPage';
 import { BrowserRouter,Route, Routes } from 'react-router-dom';
 import Form from './components/layout/Form';
-import Consultations from './components/sections/ConsultationsSection';
+import LoginForm from './components/layout/LoginForm';
+import SuccessMessage from './components/layout/SuccessMessage';
+import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import { ReactNode } from 'react';
 
 function App() {
+
+const [formStep, setFormStep] = useState(0); 
+interface ProtectedRouteProps {
+  children: ReactNode;
+  allowedStep: number;
+  currentStep: number;
+}
+
+const ProtectedRoute = ({ children, allowedStep, currentStep }: ProtectedRouteProps) => {
+  if (currentStep < allowedStep) {
+    return <Navigate to="/" replace />;
+  }
+  return <>{children}</>;
+};
+
+
+
   // Setup intersection observer for scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -44,13 +65,41 @@ function App() {
       
 
       <div dir='rtl' lang='ar'>
-          <Routes>
-            <Route path='/' element={<LandingPage></LandingPage>}></Route>
-            <Route path='form' element={<Form></Form>}></Route>
-          </Routes>
+         <Routes>
+  <Route path="/" element={<LandingPage />} />
+
+  <Route
+    path="/form"
+    element={
+      <ProtectedRoute allowedStep={0} currentStep={formStep}>
+        <Form />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/login"
+    element={
+      <ProtectedRoute allowedStep={1} currentStep={formStep}>
+        <LoginForm/>
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/success"
+    element={
+      <ProtectedRoute allowedStep={2} currentStep={formStep}>
+        <SuccessMessage/>
+      </ProtectedRoute>
+    }
+  />
+</Routes>
+
       </div>
 
     </ThemeProvider>
+    
     <ScrollToTop></ScrollToTop>
 
     <Whatsapp></Whatsapp>
