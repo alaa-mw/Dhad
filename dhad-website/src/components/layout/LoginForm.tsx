@@ -129,8 +129,10 @@ const PasswordStrengthIndicator = ({ password }: PasswordStrengthIndicatorProps)
     </Box>
   );
 };
-
-const LoginForm: React.FC = () => {
+  interface FormProps {
+    onNext: () => void;
+  }
+const LoginForm: React.FC<FormProps> = ({ onNext })  => {
   const navigate = useNavigate();
   const location = useLocation();
   const initialData = location.state?.formData || {};
@@ -154,11 +156,13 @@ const LoginForm: React.FC = () => {
 
   const onSubmit = (data: LoginSettingsValues) => {
     console.log('Login settings submitted:', data);
+    onNext();
     navigate('/success', { 
       state: { 
         userData: {
           ...initialData,
           username: data.username,
+          email: data.email,
           studyProgram: initialData.studyProgram || 'accelerated',
         }
       }

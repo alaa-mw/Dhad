@@ -64,6 +64,7 @@ const SuccessMessage = () => {
   ];
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const timer1 = setTimeout(() => {
       setActiveStep(1);
     }, 4000);

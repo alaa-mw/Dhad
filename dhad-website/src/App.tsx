@@ -10,8 +10,9 @@ import Form from './components/layout/Form';
 import LoginForm from './components/layout/LoginForm';
 import SuccessMessage from './components/layout/SuccessMessage';
 
+// App.tsx
 function App() {
-  const [formStep, setFormStep] = useState(0);
+  const [formStep, setFormStep] = useState(0); 
 
   interface ProtectedRouteProps {
     children: ReactNode;
@@ -26,7 +27,6 @@ function App() {
     return <>{children}</>;
   };
 
-  // Setup intersection observer for scroll animations
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
@@ -36,12 +36,10 @@ function App() {
       }
     }, { threshold: 0.1 });
 
-    // Get all elements with animation classes
     const animatedElements = document.querySelectorAll(
       '.fade-in, .slide-up, .slide-right, .slide-left'
     );
 
-    // Observe each element
     for (const el of animatedElements) {
       observer.observe(el);
     }
@@ -60,17 +58,32 @@ function App() {
         <div dir="rtl" lang="ar">
           <Routes>
             <Route path="/" element={<LandingPage />} />
+
             <Route
               path="/form"
-              element={<Form  />}
+              element={
+                <ProtectedRoute allowedStep={0} currentStep={formStep}>
+                  <Form onNext={() => setFormStep(1)} />
+                </ProtectedRoute>
+              }
             />
+
             <Route
               path="/login"
-              element={<LoginForm />}
+              element={
+                <ProtectedRoute allowedStep={1} currentStep={formStep}>
+                  <LoginForm onNext={() => setFormStep(2)} />
+                </ProtectedRoute>
+              }
             />
+
             <Route
               path="/success"
-              element={<SuccessMessage />}
+              element={
+                <ProtectedRoute allowedStep={2} currentStep={formStep}>
+                  <SuccessMessage />
+                </ProtectedRoute>
+              }
             />
           </Routes>
         </div>
@@ -80,5 +93,6 @@ function App() {
     </BrowserRouter>
   );
 }
+
 
 export default App;

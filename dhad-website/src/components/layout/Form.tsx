@@ -135,8 +135,11 @@ const StyledSelect = styled(Select)(() => ({
   },
 }));
 
+  interface FormProps {
+    onNext: () => void;
+  }
 
-const Form: React.FC = () => {
+const Form: React.FC<FormProps> = ({ onNext })  => {
   const navigate = useNavigate();
   const {
     register,
@@ -162,9 +165,10 @@ const Form: React.FC = () => {
   });
 
   const agreeToTerms = watch('agreeToTerms');
+
   const onSubmit = (data: FormValues) => {
     console.log('Form submitted:', data);
-    
+    onNext(); 
     navigate('/login', { state: { formData: data } });
   };
 
