@@ -162,9 +162,9 @@ const Form: React.FC = () => {
   });
 
   const agreeToTerms = watch('agreeToTerms');
-
   const onSubmit = (data: FormValues) => {
     console.log('Form submitted:', data);
+    
     navigate('/login', { state: { formData: data } });
   };
 
