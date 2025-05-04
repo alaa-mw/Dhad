@@ -20,6 +20,7 @@ import {
   RadioGroup,
   Snackbar,
   Alert,
+  ListItem,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
@@ -109,6 +110,104 @@ const StyledSelect = styled(Select)(() => ({
   },
 }));
 
+const availableGrades = [
+  "الأول",
+  "الثاني",
+  "الثالث",
+  "الرابع",
+  "الخامس",
+  "السادس",
+  "السابع",
+  "الثامن",
+  "التاسع",
+  "العاشر",
+  "الحادي عشر",
+  "الثاني عشر",
+];
+
+// type GradeSubjectsMap = Record< typeof availableGrades, readonly string[]>;
+type GradeSubjectsMap = {
+  [key in string]: string[];
+};
+
+const gradeSubjects: GradeSubjectsMap = {
+  الأول: ["اللغة العربية", "الرياضيات", "التربية الدينية"],
+  الثاني: ["اللغة العربية", "الرياضيات", "العلوم", "التربية الدينية"],
+  "الصف الثالث": ["اللغة العربية", "الرياضيات", "العلوم", "التربية الدينية"],
+  "الصف الرابع": [
+    "اللغة العربية",
+    "الرياضيات",
+    "العلوم",
+    "اللغة الإنجليزية",
+    "الاجتماعيات",
+  ],
+  "الصف الخامس": [
+    "اللغة العربية",
+    "الرياضيات",
+    "العلوم",
+    "اللغة الإنجليزية",
+    "الاجتماعيات",
+  ],
+  "الصف السادس": [
+    "اللغة العربية",
+    "الرياضيات",
+    "العلوم",
+    "اللغة الإنجليزية",
+    "الاجتماعيات",
+  ],
+  "الصف السابع": [
+    "اللغة العربية",
+    "الرياضيات",
+    "العلوم",
+    "اللغة الإنجليزية",
+    "التاريخ",
+    "الجغرافيا",
+  ],
+  "الصف الثامن": [
+    "اللغة العربية",
+    "الرياضيات",
+    "العلوم",
+    "اللغة الإنجليزية",
+    "التاريخ",
+    "الجغرافيا",
+    "الفيزياء",
+  ],
+  "الصف التاسع": [
+    "اللغة العربية",
+    "الرياضيات",
+    "العلوم",
+    "اللغة الإنجليزية",
+    "التاريخ",
+    "الجغرافيا",
+    "الفيزياء",
+    "الكيمياء",
+  ],
+  "الصف العاشر": [
+    "اللغة العربية",
+    "الرياضيات",
+    "الفيزياء",
+    "الكيمياء",
+    "الأحياء",
+    "اللغة الإنجليزية",
+  ],
+  "الصف الحادي عشر": [
+    "اللغة العربية",
+    "الرياضيات",
+    "الفيزياء",
+    "الكيمياء",
+    "الأحياء",
+    "اللغة الإنجليزية",
+  ],
+  "الصف الثاني عشر": [
+    "اللغة العربية",
+    "الرياضيات",
+    "الفيزياء",
+    "الكيمياء",
+    "الأحياء",
+    "اللغة الإنجليزية",
+  ],
+} as const;
+
 const Form: React.FC = () => {
   const { mutate, error } = useSendData<SignupFormData>("/storeWaitList");
   const [open, setOpen] = React.useState(false);
@@ -125,9 +224,9 @@ const Form: React.FC = () => {
     curriculum: "",
     email: "",
     phone: "",
-    // grade: الصف السابع,
-    // subjects: الرياضيات، العلوم، اللغة العربية,
-    // arabic_level: ,
+    grade: "",
+    subjects: "", //fix
+    arabic_level: "",
     agreeToTerms: false,
   });
 
@@ -156,6 +255,42 @@ const Form: React.FC = () => {
       ...formData,
       [e.target.name as string]: e.target.value as string,
     });
+  };
+
+  const handleSubjectsChange = (event: SelectChangeEvent<string[]>) => {
+    const selectedValues = event.target.value;
+    const currentGradeSubjects = gradeSubjects[formData.grade] || [];
+
+    let updatedSubjects: string;
+
+    // Handle "Select All" toggle
+    if (selectedValues.includes("all")) {
+      updatedSubjects =
+        formData.subjects.split("، ").length === currentGradeSubjects.length // all selected before
+          ? "" // Unselect
+          : currentGradeSubjects.join("، "); // Select all
+    }
+    // Handle selection/unselection
+    else {
+      const currentSelections = formData.subjects.split("، ").filter(Boolean);
+      const newSelections = Array.isArray(selectedValues)
+        ? selectedValues
+        : [selectedValues];
+
+      // add if not present, remove if present
+      updatedSubjects = currentSelections
+        .filter((subj) => !newSelections.includes(subj)) // Remove unchecked
+        .concat(
+          newSelections.filter((subj) => !currentSelections.includes(subj))
+        ) // Add newly checked
+        .join("، ");
+    }
+
+    setFormData({
+      ...formData,
+      subjects: updatedSubjects,
+    });
+    console.log(formData);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -193,6 +328,9 @@ const Form: React.FC = () => {
     phone: string;
     agreeToTerms: boolean;
     program: string;
+    grade: string;
+    subjects: string;
+    arabic_level: string;
   }
 
   return (
@@ -530,7 +668,7 @@ const Form: React.FC = () => {
                         }}
                       >
                         <Typography variant="subtitle1" component="span">
-                          مكان الولادة:
+                          المدينة أو الدولة :
                         </Typography>
                       </Box>
                       <StyledTextField
@@ -610,9 +748,15 @@ const Form: React.FC = () => {
                         <MenuItem value="" disabled>
                           اختر المستوى الدراسي
                         </MenuItem>
-                        <MenuItem value="primary">المرحلة الابتدائية</MenuItem>
-                        <MenuItem value="middle">المرحلة الإعدادية</MenuItem>
-                        <MenuItem value="high">المرحلة الثانوية</MenuItem>
+                        <MenuItem value="المرحلة الابتدائية">
+                          المرحلة الابتدائية
+                        </MenuItem>
+                        <MenuItem value="المرحلة الإعدادية">
+                          المرحلة الإعدادية
+                        </MenuItem>
+                        <MenuItem value="المرحلة الثانوية">
+                          المرحلة الثانوية
+                        </MenuItem>
                       </StyledSelect>
                       <FieldError field="education_level" />
                     </Box>
@@ -645,8 +789,12 @@ const Form: React.FC = () => {
                         <MenuItem value="" disabled>
                           اختر المنهج
                         </MenuItem>
-                        <MenuItem value="primary">المنهاج السوري</MenuItem>
-                        <MenuItem value="middle">المنهاج الدولي</MenuItem>
+                        <MenuItem value="المنهاج السوري">
+                          المنهاج السوري
+                        </MenuItem>
+                        <MenuItem value="المنهاج الدولي">
+                          المنهاج الدولي
+                        </MenuItem>
                       </StyledSelect>
                       <FieldError field="curriculum" />
                     </Box>
@@ -679,15 +827,90 @@ const Form: React.FC = () => {
                         <MenuItem value="" disabled>
                           اختر البرنامج
                         </MenuItem>
-                        <MenuItem value="primary">
+                        <MenuItem value="برنامج التعليم التعويضي المسرع">
                           برنامج التعليم التعويضي المسرع
                         </MenuItem>
-                        <MenuItem value="middle">
+                        <MenuItem value="برنامج اللغة العربية">
                           برنامج اللغة العربية لأبناء السوريين الغير ناطقين بها
                         </MenuItem>
                       </StyledSelect>
                       <FieldError field="program" />
                     </Box>
+                    {formData.program === "برنامج التعليم التعويضي المسرع" && (
+                      <StyledSelect
+                        fullWidth
+                        name="grade"
+                        value={formData.grade}
+                        onChange={handleSelectChange}
+                        displayEmpty
+                        variant="outlined"
+                        MenuProps={{ disableScrollLock: true }}
+                        error={!!fieldErrors.grade}
+                        style={{ marginTop: "16px" }}
+                      >
+                        <MenuItem value="" disabled>
+                          اختر الصف
+                        </MenuItem>
+                        {availableGrades.map((grade, index) => (
+                          <MenuItem key={index} value={`الصف ${grade}`}>
+                            {`الصف ${grade}`}
+                          </MenuItem>
+                        ))}
+                      </StyledSelect>
+                    )}
+                    {formData.program === "برنامج التعليم التعويضي المسرع" &&
+                      formData.grade && (
+                        <>
+                          <Typography variant="subtitle1" component="span">
+                            المواد الدراسية المرغوبة :
+                          </Typography>
+                          <ListItem
+                            sx={{ my: "0 !important", py: "2px !important" }}
+                          >
+                            <Checkbox
+                              value={"all"}
+                              checked={
+                                formData.subjects.split("، ").length ===
+                                gradeSubjects[formData.grade].length
+                              }
+                              onChange={handleSubjectsChange}
+                            />
+                            تحديد الكل
+                          </ListItem>
+                          {gradeSubjects[formData.grade]?.map((subject) => (
+                            <ListItem
+                              sx={{ my: "0 !important", py: "2px !important" }}
+                            >
+                              <Checkbox
+                                value={subject}
+                                checked={formData.subjects.includes(subject)}
+                                onChange={handleSubjectsChange}
+                              />
+                              {subject}
+                            </ListItem>
+                          ))}
+                        </>
+                      )}
+                    {formData.program === "برنامج اللغة العربية" && (
+                      <StyledSelect
+                        fullWidth
+                        name="arabic_level"
+                        value={formData.arabic_level}
+                        onChange={handleSelectChange}
+                        displayEmpty
+                        variant="outlined"
+                        MenuProps={{ disableScrollLock: true }}
+                        error={!!fieldErrors.arabic_level}
+                        style={{ marginTop: "16px" }}
+                      >
+                        <MenuItem value="" disabled>
+                          اختر المستوى
+                        </MenuItem>
+                        <MenuItem value="beginner">مبتدئ</MenuItem>
+                        <MenuItem value="intermediate">متوسط</MenuItem>
+                        <MenuItem value="expert">خبير</MenuItem>
+                      </StyledSelect>
+                    )}
 
                     <Typography
                       variant="h6"
