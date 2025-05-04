@@ -138,7 +138,7 @@ const FooterSection = () => {
               <List dense>
                 {[
                   { id: "contact-form", title: "تواصل معنا" },
-                  { id: "login", title: "تسجيل الدخول" },
+                  { id: "register", title: "تسجيل الدخول" },
                 ].map((item) => (
                   <ListItem key={item.id} sx={{ px: 0 }}>
                     <Link

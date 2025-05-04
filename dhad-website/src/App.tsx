@@ -1,18 +1,20 @@
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import ScrollToTop from './components/sections/scrollUp';
-import Whatsapp from './components/sections/Whatsapp';
-import theme from './styles/theme';
-import { useEffect, useState, ReactNode } from 'react';
-import LandingPage from './pages/LandingPage';
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import Form from './components/layout/Form';
-import LoginForm from './components/layout/LoginForm';
-import SuccessMessage from './components/layout/SuccessMessage';
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import ScrollToTop from "./components/sections/scrollUp";
+import Whatsapp from "./components/sections/Whatsapp";
+import theme from "./styles/theme";
+import { useEffect, useState, ReactNode } from "react";
+import LandingPage from "./pages/LandingPage";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import Form from "./components/layout/Form";
+import LoginForm from "./components/layout/LoginForm";
+import SuccessMessage from "./components/layout/SuccessMessage";
+import ContactForm from "./pages/ContactForm";
+import AdminRegister from "./pages/AdminRegister";
 
 // App.tsx
 function App() {
-  const [formStep, setFormStep] = useState(0); 
+  const [formStep, setFormStep] = useState(0);
 
   interface ProtectedRouteProps {
     children: ReactNode;
@@ -20,7 +22,11 @@ function App() {
     currentStep: number;
   }
 
-  const ProtectedRoute = ({ children, allowedStep, currentStep }: ProtectedRouteProps) => {
+  const ProtectedRoute = ({
+    children,
+    allowedStep,
+    currentStep,
+  }: ProtectedRouteProps) => {
     if (currentStep < allowedStep) {
       return <Navigate to="/" replace />;
     }
@@ -28,16 +34,19 @@ function App() {
   };
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
         }
-      }
-    }, { threshold: 0.1 });
+      },
+      { threshold: 0.1 }
+    );
 
     const animatedElements = document.querySelectorAll(
-      '.fade-in, .slide-up, .slide-right, .slide-left'
+      ".fade-in, .slide-up, .slide-right, .slide-left"
     );
 
     for (const el of animatedElements) {
@@ -85,6 +94,9 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
+            <Route path="contact-form" element={<ContactForm />}></Route>
+            <Route path="register" element={<AdminRegister />}></Route>
           </Routes>
         </div>
         <ScrollToTop />
