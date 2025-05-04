@@ -94,6 +94,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+
             <Route path="contact-form" element={<ContactForm />}></Route>
             <Route path="register" element={<AdminRegister />}></Route>
           </Routes>

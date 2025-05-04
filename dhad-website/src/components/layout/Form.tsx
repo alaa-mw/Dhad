@@ -284,11 +284,9 @@ const Form: React.FC<FormProps> = ({ onNext }) => {
 
   const handleSubjectsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
-    if (!grade) {
-      console.error("No grade selected");
-      return;
-    }
-    const currentGradeSubjects = gradeSubjects[grade] || [];
+    if (!grade) return;
+    const currentGradeSubjects =
+      gradeSubjects[grade.replace("الصف ", "")] || [];
     let newSubjects = subjects ? subjects.split("، ") : [];
 
     if (value === "all") {
@@ -614,7 +612,6 @@ const Form: React.FC<FormProps> = ({ onNext }) => {
                       )}
                     </Box>
 
-                    {/* City */}
                     {/* City Dropdown */}
                     <Box>
                       <Typography
@@ -728,23 +725,6 @@ const Form: React.FC<FormProps> = ({ onNext }) => {
                         </FormHelperText>
                       )}
                     </Box>
-                    {/* <Box>
-                      <Typography
-                        variant="subtitle1"
-                        component="span"
-                        sx={{ display: "block", mb: 1, textAlign: "right" }}
-                      >
-                        المدينة أو الدولة:
-                      </Typography>
-                      <StyledTextField
-                        fullWidth
-                        placeholder="مثال: دمشق أو دبي"
-                        error={!!errors.city}
-                        helperText={errors.city?.message}
-                        FormHelperTextProps={{ sx: { textAlign: "right" } }}
-                        {...register("city")}
-                      />
-                    </Box> */}
 
                     {/* Current Location */}
                     <Box>
