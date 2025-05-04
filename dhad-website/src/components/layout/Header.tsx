@@ -19,7 +19,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link as ScrollLink } from 'react-scroll';
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import logo from '../../assets/images/logo.webp';
 
 const navLinks = [
@@ -105,11 +104,7 @@ const Header = () => {
 
   return (
     <>
-      <motion.div
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
+      
         <AppBar
           position="fixed"
           color="default"
@@ -209,7 +204,6 @@ const Header = () => {
         </Drawer>
 
         <Toolbar />
-      </motion.div>
     </>
   );
 };
