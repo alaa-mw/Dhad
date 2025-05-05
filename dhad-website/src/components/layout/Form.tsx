@@ -479,13 +479,12 @@ const Form: React.FC<FormProps> = ({ onNext }) => {
 
                 {/* Program Info Cards */}
                 <Box
-                  borderRadius={2}
                   boxShadow={1}
-                  sx={{ backgroundColor: "#ffb35061" }}
+                  borderRadius={2}
                 >
                   <Card elevation={0}>
-                    <CardContent>
-                      <Typography variant="h6" fontWeight="bold">
+                    <CardContent sx={{backgroundColor: "#ffb35061"}}>
+                      <Typography variant="h6" fontWeight="bold" >
                         لمحة عن برنامج التعليم التعويضي المسرع
                       </Typography>
                       <Typography variant="body2" mt={2} color="text.secondary">
@@ -496,12 +495,11 @@ const Form: React.FC<FormProps> = ({ onNext }) => {
                 </Box>
 
                 <Box
-                  borderRadius={2}
                   boxShadow={1}
-                  sx={{ backgroundColor: "#ffb35061" }}
+                  borderRadius={2}
                 >
                   <Card elevation={0}>
-                    <CardContent>
+                    <CardContent sx={{backgroundColor: "#ffb35061"}}>
                       <Typography variant="h6" fontWeight="bold">
                         لمحة عن برنامج اللغة العربية
                       </Typography>
@@ -626,6 +624,10 @@ const Form: React.FC<FormProps> = ({ onNext }) => {
                         displayEmpty
                         error={!!errors.city}
                         {...register("city")}
+                        defaultValue={""}
+                        MenuProps={{
+                          disableScrollLock: true
+                        }}
                       >
                         <MenuItem value="" disabled>
                           اختر المدينة أو الدولة
@@ -770,6 +772,10 @@ const Form: React.FC<FormProps> = ({ onNext }) => {
                         {...register("education_level")}
                         displayEmpty
                         error={!!errors.education_level}
+                        defaultValue={""}
+                        MenuProps={{
+                          disableScrollLock: true
+                        }}
                       >
                         <MenuItem value=""  disabled >
                           اختر المستوى الدراسي
@@ -805,6 +811,10 @@ const Form: React.FC<FormProps> = ({ onNext }) => {
                         {...register("curriculum")}
                         displayEmpty
                         error={!!errors.curriculum}
+                        defaultValue={""}
+                        MenuProps={{
+                          disableScrollLock: true
+                        }}
                       >
                         <MenuItem value="" disabled>
                           اختر المنهج
@@ -837,6 +847,10 @@ const Form: React.FC<FormProps> = ({ onNext }) => {
                         {...register("program")}
                         displayEmpty
                         error={!!errors.program}
+                        defaultValue={""}
+                        MenuProps={{
+                          disableScrollLock: true
+                        }}
                       >
                         <MenuItem value="" disabled>
                           اختر البرنامج
@@ -870,6 +884,10 @@ const Form: React.FC<FormProps> = ({ onNext }) => {
                           {...register("grade")}
                           displayEmpty
                           error={!!errors.grade}
+                          MenuProps={{
+                          disableScrollLock: true
+                        }}
+                        defaultValue={""}
                         >
                           <MenuItem value="" disabled>
                             اختر الصف
@@ -943,6 +961,10 @@ const Form: React.FC<FormProps> = ({ onNext }) => {
                           {...register("arabic_level")}
                           displayEmpty
                           error={!!errors.arabic_level}
+                          MenuProps={{
+                          disableScrollLock: true
+                        }}
+                        defaultValue={""}
                         >
                           <MenuItem value="" disabled>
                             اختر المستوى
@@ -1002,7 +1024,7 @@ const Form: React.FC<FormProps> = ({ onNext }) => {
                       <StyledTextField
                         fullWidth
                         type="text"
-                        placeholder="+963912345678 :مثال"
+                        placeholder="963912345678+ :مثال"
                         error={!!errors.phone}
                         helperText={errors.phone?.message}
                         FormHelperTextProps={{ sx: { textAlign: "right" } }}
