@@ -19,7 +19,6 @@ import {
   RadioGroup,
   FormHelperText,
   Snackbar,
-  Alert,
   ListItem,
   SelectChangeEvent,
   ListSubheader,
@@ -33,7 +32,6 @@ import StarIcon from "@mui/icons-material/Star";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import GoogleAccount from "./GoogleAccount";
 import { useNavigate } from "react-router-dom";
 import useSendData from "../../hooks/useSendData";
 
@@ -370,6 +368,7 @@ const Form: React.FC<FormProps> = ({ onNext }) => {
                         display: "flex",
                         alignItems: "center",
                         color: "white",
+                        backgroundColor: "#1ca7ae",
                       }}
                     >
                       <Box mr={3}>
@@ -405,6 +404,7 @@ const Form: React.FC<FormProps> = ({ onNext }) => {
                         display: "flex",
                         alignItems: "center",
                         color: "white",
+                        backgroundColor: "#1ca7ae",
                       }}
                     >
                       <Box mr={3}>
@@ -771,7 +771,7 @@ const Form: React.FC<FormProps> = ({ onNext }) => {
                         displayEmpty
                         error={!!errors.education_level}
                       >
-                        <MenuItem value="" disabled>
+                        <MenuItem value=""  disabled >
                           اختر المستوى الدراسي
                         </MenuItem>
                         <MenuItem value="المرحلة الابتدائية">
@@ -1038,7 +1038,6 @@ const Form: React.FC<FormProps> = ({ onNext }) => {
                       >
                         التسجيل
                       </StyledSubmitButton>
-                      <GoogleAccount />
                     </Box>
                   </Stack>
                 </FormContainer>
